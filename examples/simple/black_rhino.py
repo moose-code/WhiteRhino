@@ -37,11 +37,11 @@ if __name__ == '__main__':
     from src.environment import Environment
     from src.runner import Runner
 
-    args = ['./black_rhino.py',  "environments/", "test_all_methods",  "log/"]
-    # args = sys.argv
+    #args = ['./black_rhino.py',  "environments/", "test_all_methods",  "log/"]
+    args = sys.argv
 
     if len(args) != 4:
-        print "Usage: ./black_rhino environment_directory/ environment_identifier log_directory/"
+        print("Usage: ./black_rhino environment_directory/ environment_identifier log_directory/")
         sys.exit()
 
 
@@ -55,17 +55,18 @@ if __name__ == '__main__':
     # Configure logging parameters so we get output while the program runs
     logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %H:%M:%S',
                         filename=log_directory + identifier + ".log", level=logging.INFO)
-    logging.info('START logging for run: %s',  environment_directory + identifier + ".xml")
+    logging.info('START logging for run: %s',
+                 environment_directory + identifier + ".xml")
 
-    environment = Environment(environment_directory,  identifier)
+    environment = Environment(environment_directory, identifier)
     runner = Runner(environment)
 
 #
 # UPDATE STEP
 #
     for i in range(int(environment.num_simulations)):
-        logging.info('  STARTED with run %s',  str(i))
-        environment.initialize(environment_directory,  identifier)
+        logging.info('  STARTED with run %s', str(i))
+        environment.initialize(environment_directory, identifier)
         runner.initialize(environment)
         # do the run
         runner.do_run(environment)
@@ -74,4 +75,5 @@ if __name__ == '__main__':
 #
 # MEASUREMENT AND LOGGING
 #
-    logging.info('FINISHED logging for run: %s \n', environment_directory + identifier + ".xml")
+    logging.info('FINISHED logging for run: %s \n',
+                 environment_directory + identifier + ".xml")

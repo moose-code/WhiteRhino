@@ -37,8 +37,8 @@ if __name__ == '__main__':
     from src.environment import Environment
     from src.runner import Runner
 
-    args = ['./black_rhino.py',  "environments/", "test_all_methods",  "log/"]
-    # args = sys.argv
+    #args = ['./black_rhino.py',  "environments/", "test_all_methods",  "log/"]
+    args = sys.argv
 
     if len(args) != 4:
         print "Usage: ./black_rhino environment_directory/ environment_identifier log_directory/"
